@@ -3,7 +3,7 @@ frontend/dist/
 npm-debug.log*
 .env
 *.log
-
-
+secret.txt
+.DS_Store
 
 
