@@ -5,6 +5,4 @@ npm-debug.log*
 *.log
 secret.txt
 .DS_Store
-
-
-.DS_Store
+project/.DS_Store
