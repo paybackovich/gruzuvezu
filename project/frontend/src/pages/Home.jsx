@@ -3,7 +3,6 @@ import Hero from '../components/Hero.jsx';
 import Card from '../components/Card.jsx';
 import FAQ from '../components/FAQ.jsx';
 import Button from '../components/Button.jsx';
-import iconImage from '../assets/icon.png';
 
 const steps = [
   {
@@ -94,7 +93,6 @@ const Home = () => (
       subtitle="цифры грузопотока"
       title="GruzUvezu — разместите заявку, получите отклики за 7 минут"
       description="Сводим грузовладельцев и перевозчиков, чтобы заполнять рейсы без простоя и запускать логистику в срок. Контроль статусов, рейтинги, безопасные расчёты."
-      icon={iconImage}
       primaryCta={{ label: 'Разместить заявку', to: '/request' }}
       secondaryCta={{ label: 'Каталог перевозчиков', to: '/carriers' }}
       stats={[
