@@ -1,6 +1,6 @@
 import Button from './Button.jsx';
 
-const Hero = ({ title, subtitle, description, primaryCta, secondaryCta, stats = [] }) => (
+const Hero = ({ title, subtitle, description, primaryCta, secondaryCta, stats = [], icon }) => (
   <section className="bg-gradient-to-br from-blue-600 via-blue-500 to-slate-900 text-white">
     <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
       <div className="space-y-6">
@@ -9,7 +9,16 @@ const Hero = ({ title, subtitle, description, primaryCta, secondaryCta, stats = 
             {subtitle}
           </p>
         )}
-        <h1 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">{title}</h1>
+        <h1 className="flex items-center gap-3 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+          {icon && (
+            <img 
+              src={icon} 
+              alt="GruzUvezu" 
+              className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 flex-shrink-0"
+            />
+          )}
+          <span>{title}</span>
+        </h1>
         {description && <p className="text-lg text-white/80">{description}</p>}
         <div className="flex flex-wrap gap-3">
           {primaryCta && (
