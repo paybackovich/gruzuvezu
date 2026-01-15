@@ -6,100 +6,54 @@ import Button from '../components/Button.jsx';
 
 const steps = [
   {
-    title: 'Разместите заявку',
-    description: 'Опишите маршрут, тип машины, бюджет и особые требования за 2 минуты.',
+    title: 'Вы оставляете заявку',
+    description: 'Укажите маршрут, тип груза и удобное время. Мы автоматически отправим заявку перевозчикам в вашем городе.',
   },
   {
-    title: 'Получите отклики',
-    description: 'Проверенные перевозчики откликаются с тарифами и сроками выполнения.',
+    title: 'Мы обрабатываем заказ',
+    description: 'Обычно ответ приходит в течение 10 минут. Как только исполнитель подтвердит заказ, вы получите уведомление.',
   },
   {
-    title: 'Выберите исполнителя',
-    description: 'Сравните рейтинг, флот и условия, заключите безопасную сделку на платформе.',
-  },
-];
-
-const transportTypes = [
-  {
-    title: 'Городские малотоннажники',
-    description: 'До 1,5 т · для адресных доставок, маркетплейсов и ритейла.',
+    title: 'Перевозчик связывается с вами',
+    description: 'Исполнитель выполняет доставку и связывается с вами для уточнения деталей.',
   },
   {
-    title: 'Газели-тент',
-    description: 'Гибко подстраиваются под габариты, защищают груз от осадков.',
+    title: 'Вы можете оставить отзыв',
+    description: 'После завершения перевозки вы можете написать отзыв о работе перевозчика.',
   },
-  {
-    title: 'Изотермы и термобудки',
-    description: 'Температурные перевозки: фарма, продукты, косметика.',
-  },
-  {
-    title: 'Бортовые платформы',
-    description: 'Для строительных материалов, оборудования и нестандартных грузов.',
-  },
-];
-
-const advantages = [
-  {
-    title: 'Прозрачные тарифы',
-    description: 'Видите ставку перевозчика сразу, без телефонных тендеров и скрытых доплат.',
-  },
-  {
-    title: 'Рейтинги и верификация',
-    description: 'Каждый партнёр проходит проверку документов и имеет публичную историю заказов.',
-  },
-  {
-    title: 'Быстрые сделки',
-    description: 'В среднем отклики появляются за 7 минут, а загрузка — в тот же день.',
-  },
-  {
-    title: 'Безопасные расчёты',
-    description: 'Эскроу-счёт и уведомления о статусах защищают обе стороны.',
-  },
-];
-
-const routes = [
-  { from: 'Москва', to: 'Санкт‑Петербург', eta: '8 часов', price: 'от 18 500 ₽' },
-  { from: 'Казань', to: 'Нижний Новгород', eta: '6 часов', price: 'от 14 000 ₽' },
-  { from: 'Екатеринбург', to: 'Челябинск', eta: '4 часа', price: 'от 11 500 ₽' },
-  { from: 'Новосибирск', to: 'Омск', eta: '10 часов', price: 'от 23 000 ₽' },
 ];
 
 const faqItems = [
   {
-    question: 'Как проходит модерация перевозчиков?',
+    question: 'Как быстро обработается заявка?',
     answer:
-      'Мы проверяем документы компании, страховки, данные об автопарке и фактические отзывы. Только подтверждённые перевозчики получают доступ к заявкам.',
+      'Обычно ответ приходит в течение 10 минут после оформления заявки. Как только исполнитель подтвердит заказ, вы получите уведомление и контакт для связи.',
   },
   {
-    question: 'Можно ли работать по безналичному расчёту?',
+    question: 'Сколько стоит перевозка?',
     answer:
-      'Да, доступны безналичные платежи с НДС, а также безопасная сделка с удержанием средств до завершения перевозки.',
+      'Стоимость зависит от маршрута и типа груза. Цена согласовывается с перевозчиком после подтверждения заказа.',
   },
   {
-    question: 'Сколько стоит размещение заявки?',
+    question: 'Как связаться с перевозчиком?',
     answer:
-      'Для заказчиков размещение и выбор победителя бесплатны. Комиссия включена в тариф перевозчика.',
-  },
-  {
-    question: 'Нужна ли интеграция с нашими системами?',
-    answer:
-      'Нет, заявки можно создавать вручную. Для крупных клиентов доступен API и интеграция с TMS.',
+      'После подтверждения заказа вы получите контакт исполнителя. Перевозчик свяжется с вами для уточнения деталей доставки.',
   },
 ];
 
 const Home = () => (
   <div className="space-y-16 pb-16">
     <Hero
-      subtitle="цифры грузопотока"
-      title="GruzUvezu — разместите заявку, получите отклики за 7 минут"
-      description="Сводим грузовладельцев и перевозчиков, чтобы заполнять рейсы без простоя и запускать логистику в срок. Контроль статусов, рейтинги, безопасные расчёты."
-      primaryCta={{ label: 'Разместить заявку', to: '/request' }}
-      secondaryCta={{ label: 'Каталог перевозчиков', to: '/carriers' }}
+      subtitle="быстрые и надежные перевозки"
+      title="ГрузУвезу — быстрые и надежные перевозки в Пскове и Псковской области"
+      description="Оформите заявку на доставку, укажите маршрут и тип груза. Мы автоматически отправим заявку перевозчикам в вашем городе. Обычно ответ приходит в течение 10 минут."
+      primaryCta={{ label: 'Оформить доставку', to: '/request' }}
+      secondaryCta={{ label: 'Стать перевозчиком', to: '/carriers' }}
       stats={[
-        { label: 'Активные перевозчики', value: '2 400+' },
-        { label: 'Заявок в сутки', value: '650' },
+        { label: 'Перевозчиков в Пскове', value: '50+' },
+        { label: 'Заявок в день', value: '25+' },
         { label: 'Средний рейтинг', value: '4.8/5' },
-        { label: 'Городов покрытия', value: '120+' },
+        { label: 'Время ответа', value: '10 мин' },
       ]}
     />
 
@@ -108,12 +62,12 @@ const Home = () => (
         <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
           Как работает биржа
         </p>
-        <h2 className="text-4xl font-bold text-slate-900">От заявки до рейса — три шага</h2>
+        <h2 className="text-4xl font-bold text-slate-900">Как это работает</h2>
         <p className="text-base text-slate-600">
-          Простая логика процесса позволяет запустить перевозку в день обращения.
+          Простой процесс от заявки до доставки. После отправки заявки мы автоматически отправим её перевозчикам в вашем городе.
         </p>
       </div>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map((step, index) => (
           <Card key={step.title} eyebrow={`Шаг ${index + 1}`} title={step.title} description={step.description} />
         ))}
@@ -122,61 +76,24 @@ const Home = () => (
 
     <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
       <div className="mb-8 flex flex-col gap-3 text-center">
-        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
-          Типы перевозок
-        </p>
-        <h2 className="text-4xl font-bold text-slate-900">Подберём подходящий транспорт</h2>
+        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Перевозчикам</p>
+        <h2 className="text-4xl font-bold text-slate-900">Вы перевозчик? Работайте с ГрузУвезу</h2>
         <p className="text-base text-slate-600">
-          От курьерских доставок до температурных грузов — в базе только профильные исполнители.
+          Получайте заказы рядом с вами и сами решайте, какие из них брать. Нет обязательств брать все заявки.
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
-        {transportTypes.map((item) => (
-          <Card key={item.title} title={item.title} description={item.description} />
-        ))}
+        <Card 
+          title="Заявки приходят напрямую в Telegram-бот"
+          description="Вы можете принять заказ или отказаться. Удобный интерфейс для управления заявками."
+        />
+        <Card 
+          title="Прозрачные условия и понятная статистика"
+          description="Видите все детали заказа, маршрут и тип груза. Отслеживайте свою статистику и рейтинг."
+        />
       </div>
-    </section>
-
-    <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-      <div className="mb-8 flex flex-col gap-3 text-center">
-        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Преимущества</p>
-        <h2 className="text-4xl font-bold text-slate-900">Почему бизнес выбирает GruzUvezu</h2>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2">
-        {advantages.map((adv) => (
-          <Card key={adv.title} title={adv.title} description={adv.description} />
-        ))}
-      </div>
-    </section>
-
-    <section className="mx-auto w-full max-w-6xl space-y-8 px-4 sm:px-6">
-      <div className="flex flex-col gap-3 text-center">
-        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
-          Популярные направления
-        </p>
-        <h2 className="text-4xl font-bold text-slate-900">Заполняем рейсы без холостого пробега</h2>
-      </div>
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-        <table className="min-w-full divide-y divide-slate-100 text-left text-sm">
-          <thead className="bg-slate-50 text-slate-500">
-            <tr>
-              <th className="px-6 py-3 font-semibold">Откуда</th>
-              <th className="px-6 py-3 font-semibold">Куда</th>
-              <th className="px-6 py-3 font-semibold">Время в пути</th>
-              <th className="px-6 py-3 font-semibold">Ставка</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100">
-            {routes.map((route) => (
-              <tr key={`${route.from}-${route.to}`}>
-                <td className="px-6 py-4 font-semibold text-slate-800">{route.from}</td>
-                <td className="px-6 py-4 text-slate-800">{route.to}</td>
-                <td className="px-6 py-4 text-slate-600">{route.eta}</td>
-                <td className="px-6 py-4 font-semibold text-blue-600">{route.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mt-8 text-center">
+        <Button to="/carriers" size="lg">Стать перевозчиком</Button>
       </div>
     </section>
 
@@ -187,15 +104,15 @@ const Home = () => (
             Готовы начать
           </p>
           <h3 className="text-3xl font-bold text-slate-900">
-            Зафиксируйте ставку и получите первые отклики уже сегодня
+            Оформите заявку и получите ответ в течение 10 минут
           </h3>
           <p className="text-base text-slate-600">
-            Менеджер настроит аккаунт, загрузит шаблоны маршрутов и подключит безопасную сделку.
+            После отправки заявки мы автоматически отправим её перевозчикам в вашем городе. Как только исполнитель подтвердит заказ, вы получите уведомление и контакт для связи.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button to="/request">Создать заявку</Button>
+            <Button to="/request">Оформить доставку</Button>
             <Button to="/contacts" variant="secondary">
-              Связаться с менеджером
+              Связаться с нами
             </Button>
           </div>
         </div>

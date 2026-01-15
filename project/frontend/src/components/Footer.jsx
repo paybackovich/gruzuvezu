@@ -59,7 +59,7 @@ const Footer = () => (
     <div className="border-t border-white/10">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-4 text-center text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <p>© {new Date().getFullYear()} GruzUvezu. Все права защищены.</p>
-        <p>ИНН 7701234567 · ОГРН 1234567891234</p>
+        <p>Разработано с поддержкой акселератора Центрального университета</p>
       </div>
     </div>
   </footer>
