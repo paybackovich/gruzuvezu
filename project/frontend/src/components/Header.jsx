@@ -4,8 +4,8 @@ import Button from './Button.jsx';
 
 const navItems = [
   { label: 'Главная', to: '/' },
-  { label: 'Заявка', to: '/request' },
-  { label: 'Перевозчики', to: '/carriers' },
+  { label: 'Для бизнеса', to: '/business' },
+  { label: 'Исполнителям', to: '/carriers' },
   { label: 'Контакты', to: '/contacts' },
 ];
 
@@ -47,7 +47,7 @@ const Header = () => {
             <div>
               <p className="text-lg font-bold text-slate-900">GruzUvezu</p>
               <p className="text-xs uppercase tracking-wider text-slate-500">
-                Биржа малотоннажных перевозок
+                Грузоперевозки по Пскову и области
               </p>
             </div>
           </Link>
@@ -58,7 +58,7 @@ const Header = () => {
 
           <div className="hidden md:flex">
             <Button to="/request" size="sm">
-              Разместить заявку
+              Заказать перевозку
             </Button>
           </div>
 
@@ -87,7 +87,7 @@ const Header = () => {
               <NavLinks itemClass="text-base" />
             </nav>
             <Button to="/request" size="md">
-              Разместить заявку
+              Заказать перевозку
             </Button>
           </div>
         )}
