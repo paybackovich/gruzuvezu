@@ -33,21 +33,12 @@ const Contacts = () => {
         <div className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
           <div>
             <p className="text-sm uppercase tracking-widest text-blue-600">Офис и поддержка</p>
-            <p className="mt-3 text-2xl font-bold text-slate-900">+7 (800) 800-20-25</p>
+            <p className="mt-3 text-2xl font-bold text-slate-900">8 (8112) 60-40-60</p>
             <p className="text-sm text-slate-500">Будни 09:00–20:00, без выходных для срочных грузов</p>
           </div>
           <div className="space-y-2 text-sm text-slate-600">
             <p>Москва, ул. Автотранспортная, 14 · БЦ «Терминал»</p>
             <p>sales@gruzuvezu.ru · telegram: @gruzuvezu_support</p>
-          </div>
-          <div className="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-slate-700">
-            Для клиентов Timeweb: после переноса на сервер сообщите нам домен paybockovich.site —
-            добавим в белый список мониторинга.
-          </div>
-          <div className="space-y-3 rounded-2xl border border-slate-100 bg-slate-50 p-4">
-            <p className="text-sm font-semibold text-slate-800">Реквизиты</p>
-            <p className="text-xs text-slate-500">ООО «ГрузУвезу» · ИНН 7701234567 · КПП 770101001</p>
-            <p className="text-xs text-slate-500">БИК 044525225 · р/с 40702810300000001234, АО «Альфа-Банк»</p>
           </div>
         </div>
 
@@ -96,18 +87,6 @@ const Contacts = () => {
             </div>
           )}
         </form>
-      </div>
-
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-900/90 text-white shadow-soft">
-        <div className="h-72 w-full bg-gradient-to-br from-blue-900 via-slate-900 to-slate-950 opacity-80" />
-        <div className="space-y-4 p-6">
-          <p className="text-sm uppercase tracking-widest text-white/60">Карта</p>
-          <h2 className="text-2xl font-semibold">Подключение в любом регионе</h2>
-          <p className="text-sm text-white/80">
-            На боевом стенде будет подключена интерактивная карта с трекингом автопарков и статусом
-            заявок. Пока используем заглушку для предпросмотра.
-          </p>
-        </div>
       </div>
     </div>
   );

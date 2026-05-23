@@ -49,12 +49,6 @@ const Home = () => (
       description="Оформите заявку на доставку, укажите маршрут и тип груза. Мы автоматически отправим заявку перевозчикам в вашем городе. Обычно ответ приходит в течение 10 минут."
       primaryCta={{ label: 'Оформить доставку', to: '/request' }}
       secondaryCta={{ label: 'Стать перевозчиком', to: '/carriers' }}
-      stats={[
-        { label: 'Перевозчиков в Пскове', value: '50+' },
-        { label: 'Заявок в день', value: '25+' },
-        { label: 'Средний рейтинг', value: '4.8/5' },
-        { label: 'Время ответа', value: '10 мин' },
-      ]}
     />
 
     <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
@@ -83,11 +77,11 @@ const Home = () => (
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
-        <Card 
+        <Card
           title="Заявки приходят напрямую в Telegram-бот"
           description="Вы можете принять заказ или отказаться. Удобный интерфейс для управления заявками."
         />
-        <Card 
+        <Card
           title="Прозрачные условия и понятная статистика"
           description="Видите все детали заказа, маршрут и тип груза. Отслеживайте свою статистику и рейтинг."
         />
@@ -121,15 +115,9 @@ const Home = () => (
             Служба поддержки
           </p>
           <div className="space-y-2 text-sm text-slate-600">
-            <p>Телефон: +7 (800) 800-20-25</p>
+            <p>Телефон: 8 (8112) 60-40-60</p>
             <p>Telegram: @gruzuvezu_support</p>
-            <p>Чат: доступен 24/7 в личном кабинете</p>
-          </div>
-          <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-600">
-            Уже есть лист заявок?{' '}
-            <Link to="/request" className="font-semibold text-blue-600">
-              Импортируйте в пару кликов →
-            </Link>
+            <p>E-mail: sales@gruzuvezu.ru</p>
           </div>
         </div>
       </div>
@@ -141,7 +129,7 @@ const Home = () => (
         <h2 className="mt-2 text-4xl font-bold text-slate-900">Отвечаем на частые вопросы</h2>
       </div>
       <FAQ items={faqItems} />
-  </section>
+    </section>
   </div>
 );
 

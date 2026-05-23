@@ -42,7 +42,7 @@ const Footer = () => (
           Контакты
         </p>
         <div className="space-y-3 text-sm text-slate-300">
-          <p>+7 (800) 800-20-25</p>
+          <p>8 (8112) 60-40-60</p>
           <p>sales@gruzuvezu.ru</p>
           <p>Москва, ул. Автотранспортная, 14</p>
         </div>
