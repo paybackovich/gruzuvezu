@@ -4,6 +4,8 @@ import Card from '../components/Card.jsx';
 import Button from '../components/Button.jsx';
 import FAQ from '../components/FAQ.jsx';
 
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxlNeeVgGsrvfeLPn3Kr8k0Q_IMK4ciiXwyXTXFP--c5OE3_Ply7YngA6QyDhcKMBTC/exec';
+
 const initialForm = { from: '', to: '', phone: '' };
 
 const services = [
@@ -79,8 +81,16 @@ const Home = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+    } catch {}
     setSubmitted(true);
     setTimeout(() => { setSubmitted(false); setForm(initialForm); }, 4000);
   };
