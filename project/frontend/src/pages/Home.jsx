@@ -41,10 +41,7 @@ const Home = () => {
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-10 sm:px-6">
       <div className="mb-8 space-y-2 text-center">
-        <h1 className="text-3xl font-bold text-slate-900">Заказать перевозку</h1>
-        <p className="text-base text-slate-500">
-          Заполните форму — менеджер перезвонит в течение 15 минут
-        </p>
+        <h1 className="text-3xl font-bold text-slate-900">Грузоперевозки по Пскову и области</h1>
       </div>
 
       <form
