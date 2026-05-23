@@ -1,170 +1,238 @@
 import { useState } from 'react';
-import FormField from '../components/FormField.jsx';
-import Input from '../components/Input.jsx';
+import { Link } from 'react-router-dom';
+import Card from '../components/Card.jsx';
 import Button from '../components/Button.jsx';
+import FAQ from '../components/FAQ.jsx';
 
-const vehicleOptions = [
-  'Малотоннажный фургон до 1,5 т',
-  'Газель тентованная',
-  'Изотермический кузов',
-  'Термобудка',
-  'Бортовая платформа',
+const initialForm = { from: '', to: '', phone: '' };
+
+const services = [
+  {
+    icon: '🚚',
+    title: 'Транспортные перевозки',
+    description: 'Доставка грузов по Пскову, области и соседним регионам. Газели, фургоны, бортовые платформы.',
+  },
+  {
+    icon: '📋',
+    title: 'Экспедиторские услуги',
+    description: 'Берём на себя организацию перевозки от и до: документы, маршрут, контроль доставки.',
+  },
+  {
+    icon: '📦',
+    title: 'Любой тип груза',
+    description: 'Промышленные товары, продукты питания, оборудование, мебель, негабаритные грузы.',
+  },
+  {
+    icon: '🤝',
+    title: 'Для бизнеса и частных лиц',
+    description: 'Работаем с юридическими лицами, ИП и частными клиентами. Договор и все закрывающие документы.',
+  },
 ];
 
-const initialState = {
-  from: '',
-  to: '',
-  date: '',
-  vehicle: vehicleOptions[0],
-  weight: '',
-  volume: '',
-  loaders: false,
-  phone: '',
-  comment: '',
-};
+const steps = [
+  { step: '1', title: 'Оставьте заявку', description: 'Укажите маршрут и контакт. Форма занимает меньше минуты.' },
+  { step: '2', title: 'Менеджер перезванивает', description: 'В течение 15 минут уточняем детали и подбираем машину.' },
+  { step: '3', title: 'Перевозчик забирает груз', description: 'В согласованное время исполнитель приезжает на точку погрузки.' },
+  { step: '4', title: 'Доставка и документы', description: 'Груз доставлен, вы получаете все необходимые закрывающие документы.' },
+];
+
+const partners = [
+  {
+    title: 'Газелька 60',
+    description: 'Псков и область. Газели-тент, 3 автомобиля. Работаем с маркетплейсами и небольшими компаниями.',
+  },
+  {
+    title: 'ТК Северо-Запад',
+    description: 'Перевозки по СЗФО. Бортовые платформы и рефрижераторы. Опыт работы с крупными поставщиками.',
+  },
+  {
+    title: 'АвтоЛогист',
+    description: 'Псков — СПб — Москва. Фургоны и изотермы. Страхование груза включено в тариф.',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Как быстро обработается заявка?',
+    answer: 'Менеджер перезванивает в течение 15 минут в рабочее время. Срочные заявки — в приоритете.',
+  },
+  {
+    question: 'Сколько стоит перевозка?',
+    answer: 'Стоимость зависит от маршрута, типа и объёма груза. Точная цена рассчитывается после звонка менеджера.',
+  },
+  {
+    question: 'Работаете ли вы с юридическими лицами?',
+    answer: 'Да, работаем с ИП и ООО. Предоставляем полный пакет документов: договор, акт, счёт-фактура.',
+  },
+  {
+    question: 'Какие регионы охватываете?',
+    answer: 'Псков и Псковская область — основной регион. Также выполняем рейсы в Санкт-Петербург, Великий Новгород, Москву.',
+  },
+];
 
 const Home = () => {
-  const [formData, setFormData] = useState(initialState);
+  const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setTimeout(() => { setSubmitted(false); setForm(initialForm); }, 4000);
   };
 
   return (
-    <div className="mx-auto w-full max-w-2xl px-4 py-10 sm:px-6">
-      <div className="mb-8 space-y-2 text-center">
-        <h1 className="text-3xl font-bold text-slate-900">Грузоперевозки по Пскову и области</h1>
-      </div>
+    <div className="space-y-20 pb-20">
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"
-      >
-        <div className="grid gap-5 md:grid-cols-2">
-          <FormField id="from" label="Откуда" required>
-            <Input
-              id="from"
-              name="from"
-              placeholder="Город, адрес"
-              value={formData.from}
-              onChange={handleChange}
-              required
-            />
-          </FormField>
-          <FormField id="to" label="Куда" required>
-            <Input
-              id="to"
-              name="to"
-              placeholder="Город, адрес"
-              value={formData.to}
-              onChange={handleChange}
-              required
-            />
-          </FormField>
-        </div>
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-blue-600 via-blue-500 to-slate-900 text-white">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-20">
 
-        <div className="grid gap-5 md:grid-cols-2">
-          <FormField id="date" label="Дата погрузки" required>
-            <Input
-              id="date"
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              required
-            />
-          </FormField>
-          <FormField id="vehicle" label="Тип машины" required>
-            <select
-              id="vehicle"
-              name="vehicle"
-              value={formData.vehicle}
-              onChange={handleChange}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 shadow-sm focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-            >
-              {vehicleOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </FormField>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-2">
-          <FormField id="weight" label="Вес груза">
-            <Input
-              id="weight"
-              name="weight"
-              placeholder="Например, 1 200 кг"
-              value={formData.weight}
-              onChange={handleChange}
-            />
-          </FormField>
-          <FormField id="volume" label="Объём / паллеты">
-            <Input
-              id="volume"
-              name="volume"
-              placeholder="8 паллет или 12 м³"
-              value={formData.volume}
-              onChange={handleChange}
-            />
-          </FormField>
-        </div>
-
-        <FormField id="phone" label="Ваш телефон" required>
-          <Input
-            id="phone"
-            name="phone"
-            type="tel"
-            placeholder="+7 (999) 123-45-67"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </FormField>
-
-        <FormField id="comment" label="Комментарий">
-          <textarea
-            id="comment"
-            name="comment"
-            rows={3}
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 shadow-sm focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-            placeholder="Особенности груза, время подачи и т.д."
-            value={formData.comment}
-            onChange={handleChange}
-          />
-        </FormField>
-
-        <label className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-          <input
-            type="checkbox"
-            name="loaders"
-            checked={formData.loaders}
-            onChange={handleChange}
-            className="h-5 w-5 rounded border-slate-300 text-blue-600 focus:ring-blue-400"
-          />
-          <span className="text-sm font-semibold text-slate-700">Нужны услуги грузчиков</span>
-        </label>
-
-        <Button type="submit" size="lg">
-          Заказать перевозку
-        </Button>
-
-        {submitted && (
-          <div className="rounded-2xl border border-green-100 bg-green-50 px-4 py-3 text-sm text-green-700">
-            Заявка принята. Менеджер свяжется с вами в течение 15 минут.
+          {/* Left: selling text */}
+          <div className="flex flex-col justify-center space-y-6">
+            <p className="inline-flex w-fit items-center rounded-full bg-white/10 px-3 py-1 text-sm font-medium uppercase tracking-wider text-white/80">
+              Псков и область
+            </p>
+            <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
+              Грузоперевозки по Пскову и области
+            </h1>
+            <p className="text-lg text-white/80">
+              Транспортные и экспедиторские услуги для бизнеса и частных лиц. Проверенные
+              перевозчики, полный пакет документов, ответ в течение 15 минут.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button to="/business" size="lg" variant="secondary">
+                Для бизнеса
+              </Button>
+              <Button to="/carriers" size="lg" variant="ghost" className="text-white hover:bg-white/10">
+                Исполнителям
+              </Button>
+            </div>
           </div>
-        )}
-      </form>
+
+          {/* Right: short form */}
+          <div className="flex items-center">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full space-y-4 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-md"
+            >
+              <p className="text-lg font-semibold">Оставить заявку</p>
+              <input
+                name="from"
+                value={form.from}
+                onChange={handleChange}
+                placeholder="Откуда"
+                required
+                className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/50 focus:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+              />
+              <input
+                name="to"
+                value={form.to}
+                onChange={handleChange}
+                placeholder="Куда"
+                required
+                className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/50 focus:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+              />
+              <input
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="Ваш телефон"
+                type="tel"
+                required
+                className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/50 focus:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+              />
+              {submitted ? (
+                <div className="rounded-2xl border border-green-300/30 bg-green-400/20 px-4 py-3 text-sm text-white">
+                  Заявка принята — перезвоним в течение 15 минут.
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
+                >
+                  Заказать перевозку
+                </button>
+              )}
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="mb-10 space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Что мы делаем</p>
+          <h2 className="text-3xl font-bold text-slate-900">Транспортные и экспедиторские услуги</h2>
+          <p className="max-w-2xl text-base text-slate-600">
+            Организуем перевозку грузов любого типа. Работаем официально — договор, страховка,
+            закрывающие документы.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {services.map((s) => (
+            <Card key={s.title} icon={s.icon} title={s.title} description={s.description} />
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="mb-10 space-y-3 text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Как это работает</p>
+          <h2 className="text-3xl font-bold text-slate-900">Четыре шага от заявки до доставки</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => (
+            <div key={s.step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+                {s.step}
+              </div>
+              <h3 className="text-base font-semibold text-slate-900">{s.title}</h3>
+              <p className="mt-2 text-sm text-slate-500">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="mb-10 space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Наши партнёры</p>
+          <h2 className="text-3xl font-bold text-slate-900">Проверенные перевозчики</h2>
+          <p className="max-w-2xl text-base text-slate-600">
+            Каждый перевозчик проходит проверку документов и автопарка. Работаем только с
+            надёжными исполнителями.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {partners.map((p) => (
+            <Card key={p.title} title={p.title} description={p.description} />
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link
+            to="/carriers"
+            className="text-sm font-semibold text-blue-600 hover:text-blue-700"
+          >
+            Стать партнёром-перевозчиком →
+          </Link>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto w-full max-w-6xl space-y-8 px-4 sm:px-6">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Вопросы и ответы</p>
+          <h2 className="mt-2 text-3xl font-bold text-slate-900">Часто спрашивают</h2>
+        </div>
+        <FAQ items={faqItems} />
+      </section>
+
     </div>
   );
 };
