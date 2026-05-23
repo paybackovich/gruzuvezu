@@ -1,83 +1,79 @@
-import Card from '../components/Card.jsx';
 import Button from '../components/Button.jsx';
+import Card from '../components/Card.jsx';
 
-const carriers = [
+const conditions = [
   {
-    name: 'Газелька 60',
-    rating: '4.9',
-    fleet: 'Газели-тент · 3 авто',
-    routes: 'Москва — Петербург, Псков, Великий Новгород',
-    tariff: 'от 10 000 ₽ / рейс',
-    description: 'Собственный диспетчерский центр, страхование груза до 3 млн ₽, круглосуточная поддержка.',
-    tags: ['Маркетплейсы', 'Страховка'],
+    title: 'Получайте заявки напрямую',
+    description: 'Мы присылаем заказы в удобный для вас канал. Вы сами решаете, какие брать — никаких обязательств.',
   },
-]
+  {
+    title: 'Прозрачная оплата',
+    description: 'Стоимость заранее согласована с заказчиком. Никаких скрытых комиссий и задержек выплат.',
+  },
+  {
+    title: 'Работа в своём регионе',
+    description: 'Заявки подбираются по вашему городу и маршрутам. Не нужно гонять машину порожняком.',
+  },
+];
 
 const Carriers = () => (
-  <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-10 sm:px-6">
+  <div className="mx-auto w-full max-w-6xl space-y-16 px-4 py-10 sm:px-6">
     <div className="space-y-4">
-      <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Перевозчики</p>
-      <h1 className="text-4xl font-bold text-slate-900">Каталог проверенных партнёров биржи</h1>
-      <p className="text-base text-slate-600">
-        Каждый перевозчик проходит верификацию документов, проверку автопарка и пилотные рейсы. Вы
-        видите рейтинг, тарифы и специализацию до публикации заявки.
+      <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Исполнителям</p>
+      <h1 className="text-4xl font-bold text-slate-900">
+        Работайте с нами — получайте стабильные заказы
+      </h1>
+      <p className="max-w-2xl text-base text-slate-600">
+        Если у вас есть грузовой автомобиль и желание работать — мы обеспечим вас заказами по
+        Пскову и области. Подключаем перевозчиков с подтверждёнными документами.
       </p>
-    </div>
-
-    <div className="grid gap-6 lg:grid-cols-2">
-      {carriers.map((carrier) => (
-        <Card key={carrier.name} title={carrier.name} description={carrier.description}>
-          <div className="mt-4 space-y-2 text-sm text-slate-600">
-            <p>
-              <span className="font-semibold text-slate-800">Рейтинг:</span> {carrier.rating}
-            </p>
-            <p>
-              <span className="font-semibold text-slate-800">Флот:</span> {carrier.fleet}
-            </p>
-            <p>
-              <span className="font-semibold text-slate-800">Маршруты:</span> {carrier.routes}
-            </p>
-            <p>
-              <span className="font-semibold text-slate-800">Тарифы:</span>{' '}
-              <span className="text-blue-600">{carrier.tariff}</span>
-            </p>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {carrier.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button size="sm" to="/request">
-              Выбрать перевозчика
-            </Button>
-            <Button size="sm" variant="secondary" to="/contacts">
-              Запросить встречу
-            </Button>
-          </div>
-        </Card>
-      ))}
-    </div>
-
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm">
-      <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Стать партнёром</p>
-      <h2 className="mt-2 text-3xl font-bold text-slate-900">Присоединяйтесь к бирже перевозчиков</h2>
-      <p className="mt-3 text-base text-slate-600">
-        Мы подключаем автопарки с подтверждённой историей и гибким графиком. Ежедневные заявки,
-        прозрачные расчёты и поддержка 24/7.
-      </p>
-      <div className="mt-6 flex justify-center gap-3">
-        <Button to="/contacts">Оставить заявку</Button>
-        <Button variant="secondary" to="/request">
-          Смотреть требования
+      <div className="flex flex-wrap gap-3 pt-2">
+        <Button to="/contacts" size="lg">
+          Подключиться
         </Button>
       </div>
     </div>
+
+    <section>
+      <h2 className="mb-8 text-2xl font-bold text-slate-900">Условия сотрудничества</h2>
+      <div className="grid gap-6 md:grid-cols-3">
+        {conditions.map((c) => (
+          <Card key={c.title} title={c.title} description={c.description} />
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 className="mb-6 text-2xl font-bold text-slate-900">Что нужно для подключения</h2>
+      <ul className="space-y-3 text-slate-600">
+        {[
+          'Собственный грузовой автомобиль или автопарк',
+          'Действующие водительские права и документы на ТС',
+          'Готовность работать по Пскову и Псковской области',
+        ].map((item) => (
+          <li key={item} className="flex items-start gap-3">
+            <span className="mt-1 h-5 w-5 flex-shrink-0 rounded-full bg-blue-100 text-center text-xs font-bold leading-5 text-blue-600">
+              ✓
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-soft">
+      <h2 className="text-2xl font-bold text-slate-900">Готовы начать?</h2>
+      <p className="mt-3 text-slate-600">
+        Свяжитесь с нами — расскажем подробнее и оформим сотрудничество.
+      </p>
+      <p className="mt-4 text-xl font-semibold text-slate-900">8 (8112) 60-40-60</p>
+      <p className="text-sm text-slate-500">Будни 09:00–20:00</p>
+      <div className="mt-6">
+        <Button to="/contacts" size="lg">
+          Оставить заявку
+        </Button>
+      </div>
+    </section>
   </div>
 );
 
