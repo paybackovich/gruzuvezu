@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx';
 import Business from './pages/Business.jsx';
 import Carriers from './pages/Carriers.jsx';
 import Contacts from './pages/Contacts.jsx';
+import Admin from './pages/Admin.jsx';
 
 const App = () => (
   <Routes>
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/business" element={<Business />} />
       <Route path="/carriers" element={<Carriers />} />
       <Route path="/contacts" element={<Contacts />} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="/request" element={<Navigate to="/" replace />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Route>

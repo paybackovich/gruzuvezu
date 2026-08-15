@@ -7,6 +7,7 @@ const navItems = [
   { label: 'Для бизнеса', to: '/business' },
   { label: 'Исполнителям', to: '/carriers' },
   { label: 'Контакты', to: '/contacts' },
+  { label: 'Админ', to: '/admin' },
 ];
 
 const Header = () => {
@@ -97,5 +98,4 @@ const Header = () => {
 };
 
 export default Header;
-
 
